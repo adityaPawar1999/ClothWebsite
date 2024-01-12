@@ -1,6 +1,11 @@
+import HeaderStyle from "./HeaderStyle";
+
 const Header = () =>{
     return(<>
-    header
+    <HeaderStyle>
+        <div className='container'>aditya</div>
+    </HeaderStyle>
+  
     </>)
 }
 export default Header;
