@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import HeaderStyle from "./HeaderStyle";
-import { useState ,useEffect } from "react";
+import { useState  } from "react";
 
 import MenuIcon from '@mui/icons-material/Menu';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -8,8 +8,8 @@ import CancelIcon from '@mui/icons-material/Cancel';
 const Header = () => {
   const [valid, setValid] = useState(false);
 
-  const onOff= () => {
-    setValid(!true);
+  const onOff = () => {
+    setValid(valid !== true);
   };
   return (
     <>
@@ -20,17 +20,23 @@ const Header = () => {
               logo
             </div>
             <div className="navbarList">
-                  <NavLink className='navLink' to='/'>HOME</NavLink>
-                  <NavLink className='navLink' to='/shop'>ALL CATEGORIES</NavLink>  
-            </div>
+              <div className="desktopNavbar">
+                <NavLink className='navLink' to='/'>HOME</NavLink>
+                <NavLink className='navLink' to='/shop'>ALL CATEGORIES</NavLink>
+              </div>  
             <div className="mobileNavbar">
               {
               (valid === true) ? (<>
               <MenuIcon onClick={onOff} className="menuIcon" sx={{color:'white'}} />
               </>) : (<>
                 <CancelIcon onClick={onOff} className="menuIcon" sx={{color:'white'}}/>
+              <div className="mobileNavLinks">
+                <NavLink className='navLink' onClick={onOff} to='/'>HOME</NavLink>
+                <NavLink className='navLink' onClick={onOff} to='/shop'>ALL CATEGORIES</NavLink>
+              </div>  
               </>)
             }
+            </div>
             </div>
           </div>
         </div>
