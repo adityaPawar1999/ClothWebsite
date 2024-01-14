@@ -7,7 +7,7 @@ const AuthLink = () =>{
     {
         (userVerified === true) ? (
             <>
-             <NavLink className='navLink' to='/'>WELCOME</NavLink>
+             <NavLink className='navLink' to='/cart'>WELCOME</NavLink>
             </>
         ) : (
             <>
