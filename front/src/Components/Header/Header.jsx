@@ -4,6 +4,7 @@ import { useState  } from "react";
 
 import MenuIcon from '@mui/icons-material/Menu';
 import CancelIcon from '@mui/icons-material/Cancel';
+import AuthLink from "../AuthLink/AuthLink";
 
 const Header = () => {
   const [valid, setValid] = useState(false);
@@ -23,6 +24,7 @@ const Header = () => {
               <div className="desktopNavbar">
                 <NavLink className='navLink' to='/'>HOME</NavLink>
                 <NavLink className='navLink' to='/shop'>ALL CATEGORIES</NavLink>
+                <AuthLink/>
               </div>  
             <div className="mobileNavbar">
               {
@@ -33,6 +35,7 @@ const Header = () => {
               <div className="mobileNavLinks">
                 <NavLink className='navLink' onClick={onOff} to='/'>HOME</NavLink>
                 <NavLink className='navLink' onClick={onOff} to='/shop'>ALL CATEGORIES</NavLink>
+                <AuthLink/>
               </div>  
               </>)
             }
