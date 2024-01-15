@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useState  } from "react";
 
 const AuthLink = () =>{
-    const [userVerified ,setuserVerified] = useState(true);
+    const [userVerified ,setuserVerified] = useState(false);
     return(<>
     {
         (userVerified === true) ? (

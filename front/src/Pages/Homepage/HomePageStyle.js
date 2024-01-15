@@ -20,6 +20,9 @@ const HomePageStyle = styled.div`
     left:10%;
     bottom:27%;
 }
+.title:hover{
+    display:none;
+}
 .description{
     position:absolute;
     color:#fff;

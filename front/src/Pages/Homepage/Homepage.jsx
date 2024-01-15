@@ -24,6 +24,7 @@ const Homepage = () =>{
                             <img
                             className="imgStyle"
                             src={value.src}
+                            alt='image'
                             />
                         </div>
                     );
