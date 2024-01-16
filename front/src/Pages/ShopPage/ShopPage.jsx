@@ -1,3 +1,4 @@
+import CategoriesList from "../../Components/CategoriesList/CategoriesList";
 import ShopPageStyle from "./ShopPageStyle";
 import data from "./shopData";
 
@@ -5,7 +6,12 @@ const ShopPage = () =>{
     return(<>
     <ShopPageStyle>
     <div className="container">          
-        <div className="row g-2">            
+        <div className="row">
+                    <div className="col-lg-3">
+            <CategoriesList/>
+        </div>
+        <div className="col-lg-9">
+            <div className="row g-2">            
             {
                 data.map((value)=>{
                 return(
@@ -23,6 +29,9 @@ const ShopPage = () =>{
                     );
                 })
             }
+            </div>
+        </div>
+
         </div>
     </div>
     </ShopPageStyle>

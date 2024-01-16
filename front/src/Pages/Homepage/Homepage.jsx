@@ -17,7 +17,7 @@ const Homepage = () =>{
                     {
                     data.map((value)=>{
                     return(
-                        <div className="col-lg-6 g-1 categoriesBox">
+                        <div className="col-lg-6 g-1 categoriesBox" key={value.id}>
                             
                         <p className="title">{value.title}</p>
                         <p className="description">{value.description}</p>
