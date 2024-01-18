@@ -20,15 +20,12 @@ const HomePageStyle = styled.div`
     left:10%;
     bottom:27%;
 }
-.title:hover{
-    display:none;
-}
+
 .description{
     position:absolute;
     color:#fff;
     font-size:.8rem;
-    left:8%;
-    bottom:1%;
+    bottom:-5%;
     padding:1rem;
     background:#212121;
 }
@@ -36,6 +33,16 @@ const HomePageStyle = styled.div`
     height:350px;
     width:100%;
     object-fit:cover;
+}
+.description{
+    width:99%;
+    opacity: 0;
+}
+.categoriesBox:hover .description{
+    opacity: 1;
+}
+.categoriesBox:hover .title{
+    opacity: 0;
 }
 `
 export default HomePageStyle;
