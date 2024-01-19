@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios"; // Import axios for making HTTP requests
 import SignUpPageStyle from './signUpPageStyle';
 
 const SignUpPage = () => {
@@ -18,9 +19,14 @@ const SignUpPage = () => {
     });
   };
 
-  const saveData = (e) => {
+  const saveData = async (e) => {
     e.preventDefault();
-    console.log(data);
+    try {
+      const savedData = await axios.post("http://localhost:5000/register", data);
+      console.log("Data saved successfully:");
+    } catch (error) {
+      console.error("Error saving data:", error);
+    }
   };
 
   return (
