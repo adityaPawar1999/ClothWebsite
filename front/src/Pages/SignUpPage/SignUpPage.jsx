@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios"; // Import axios for making HTTP requests
+import axios from "axios";
 import SignUpPageStyle from './signUpPageStyle';
 
 const SignUpPage = () => {
@@ -18,16 +18,29 @@ const SignUpPage = () => {
       [name]: value,
     });
   };
-
-  const saveData = async (e) => {
+const saveData = async (e) => {
     e.preventDefault();
     try {
-      const savedData = await axios.post("http://localhost:5000/register", data);
-      console.log("Data saved successfully:");
+        const savedData = await axios.post("http://localhost:5004/register", data);
+        console.log("Data saved successfully:", savedData.data);
     } catch (error) {
-      console.error("Error saving data:", error);
+        console.error("Error saving data:", error.message);
+
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // other than 2xx (success).
+            console.error("Response data:", error.response.data);
+            console.error("Response status:", error.response.status);
+        } else if (error.request) {
+            // The request was made but no response was received.
+            console.error("No response received from the server");
+        } else {
+            // Something happened in setting up the request that triggered an Error.
+            console.error("Error setting up the request:", error.message);
+        }
     }
-  };
+};
+
 
   return (
     <>
