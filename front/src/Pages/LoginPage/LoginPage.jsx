@@ -1,6 +1,6 @@
 import { useState } from "react";
 import LoginPageStyle from "./LoginPageStyle";
-
+import axios from 'axios'
 const LoginPage = () => {
   const [data, setData] = useState({
     Email: '',
@@ -16,9 +16,14 @@ const LoginPage = () => {
     });
   };
 
-  const saveData = (e) => {
+  const saveData = async (e) => {
     e.preventDefault();
-    console.log(data);
+    try {
+        const savedData = await axios.post("http://localhost:5004/register", data);
+        console.log('data saved sucessfully ', saveData.save);
+    } catch (error) {
+      console.log(error)
+    }
   };
   
   return (

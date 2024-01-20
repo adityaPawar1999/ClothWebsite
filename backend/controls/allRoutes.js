@@ -10,8 +10,9 @@ const getData = async (req, res) => {
     }
 };
 
-const demo = (req, res) => {
-    res.send("deeoom doom dam doomm");
+const login = async (req, res) => {
+    const {Email , Password} = req.body;
+    console.log(Email," " , Password )
 };
 
 const register = async (req, res) => {
@@ -21,19 +22,13 @@ const register = async (req, res) => {
         if (!Password) {
             return res.status(400).json({ error: 'Password is required' });
         }
-
-        // Validate other password requirements if needed
-
-        // Hash the password asynchronously using bcrypt
         const hashedPassword = await bcrypt.hash(Password, 10);
-
         const result = await user.create({
             Fname,
             Lname,
             Email,
             Password: hashedPassword
         });
-
         console.log("Data created successfully:", result);
         res.status(201).json(result);
     } catch (error) {
@@ -48,4 +43,4 @@ const register = async (req, res) => {
     }
 };
 
-module.exports = { getData, demo, register };
+module.exports = { getData, login, register };
