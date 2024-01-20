@@ -11,16 +11,21 @@ const getData = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    const {Email , Password} = req.body;
+    const { Email, Password } = req.body;
     try {
-        const EmailResult = await user.find({Email});
-        if(EmailResult){
-            const PasswordResult = await user.find({Password});
-        }else{
-            console.log('mail not available')
+        const validUser = await user.findOne({ Email });
+
+        if (validUser) {
+            if (validUser.Password === Password) {
+                console.log("Login successful");
+            } else {
+                console.log("Invalid password");
+            }
+        } else {
+            console.log('User not found');
         }
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 };
 
