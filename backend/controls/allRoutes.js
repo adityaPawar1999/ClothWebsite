@@ -12,7 +12,16 @@ const getData = async (req, res) => {
 
 const login = async (req, res) => {
     const {Email , Password} = req.body;
-    console.log(Email," " , Password )
+    try {
+        const EmailResult = await user.find({Email});
+        if(EmailResult){
+            const PasswordResult = await user.find({Password});
+        }else{
+            console.log('mail not available')
+        }
+    } catch (error) {
+        console.log(error)
+    }
 };
 
 const register = async (req, res) => {

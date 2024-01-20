@@ -19,7 +19,7 @@ const LoginPage = () => {
   const saveData = async (e) => {
     e.preventDefault();
     try {
-        const savedData = await axios.post("http://localhost:5004/register", data);
+        const savedData = await axios.post("http://localhost:5004/login", data);
         console.log('data saved sucessfully ', saveData.save);
     } catch (error) {
       console.log(error)
