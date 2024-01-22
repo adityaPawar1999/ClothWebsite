@@ -40,7 +40,7 @@ const LoginPage = () => {
                 onChange={handleInput}
                 placeholder="Email"
               />
-              <br />
+              <br/>
               <input
                 type="text"
                 className="inputField"
@@ -49,7 +49,7 @@ const LoginPage = () => {
                 onChange={handleInput}
                 placeholder="Password"
               />
-              <br />
+              <br/>
               <button type="submit" className="inputField btn">LOGIN</button>
             </form>
           </div>
