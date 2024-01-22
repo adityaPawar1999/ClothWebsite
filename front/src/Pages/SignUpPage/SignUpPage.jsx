@@ -56,7 +56,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="First Name"
               />
-              <br />
+              <br/>
               <input
                 type="text"
                 className="inputField"
@@ -65,7 +65,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Last Name"
               />
-              <br />
+              <br/>
               <input
                 type="text"
                 className="inputField"
@@ -74,7 +74,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Email"
               />
-              <br />
+              <br/>
               <input
                 type="text"
                 className="inputField"
@@ -83,7 +83,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Password"
               />
-              <br />
+              <br/>
               <button type="submit" className="inputField btn">SIGNUP</button>
             </form>
           </div>

@@ -5,9 +5,10 @@ const AuthLink = () =>{
     const [userVerified ,setuserVerified] = useState(false);
     return(<>
     {
-        (userVerified === true) ? (
+        (userVerified === false) ? (
             <>
              <NavLink className='navLink' to='/cart'>WELCOME</NavLink>
+             <NavLink className='navLink' to='/addProduct'>ADD NEW</NavLink>
             </>
         ) : (
             <>

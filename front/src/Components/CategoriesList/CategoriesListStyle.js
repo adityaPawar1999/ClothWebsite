@@ -8,10 +8,12 @@ const CategoriesListStyle = styled.div`
 p{
     padding:.5rem;
     cursor:pointer;
+    font-size:.8rem;
     font-weight:700;
     text-transform:uppercase;
 }
 p:hover{
+    color:#fff;
     background:yellowGreen;
 }
 p:active{

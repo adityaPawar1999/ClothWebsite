@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const ShopPageStyle = styled.div`
+padding-top:6rem;
 .image{
     width:100%;
 }
