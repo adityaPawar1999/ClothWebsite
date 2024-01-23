@@ -57,4 +57,13 @@ const register = async (req, res) => {
     }
 };
 
-module.exports = { getData, login, register };
+const addProduct = async(req,res)=>{
+    try{
+        const{name, prize ,company ,categories ,image ,Description} = req.body;
+        console.log(name,prize,Description)
+
+    }catch(e){
+        console.error("Error creating data:", error);
+    }
+}
+module.exports = { getData, login, register ,addProduct};
