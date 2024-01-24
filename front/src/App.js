@@ -10,6 +10,7 @@ import SignUpPage from './Pages/SignUpPage/SignUpPage'
 import ErrorPage from './Pages/ErrorPage/ErrorPage';
 import Cart from './Pages/Cart/Cart'
 import AddProduct from './Pages/AddProdouct/AddProduct';
+import SinglePage from './Pages/SinglePage.jsx/SinglePage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path='/SignUp' element={<SignUpPage/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
       <Route path='/addProduct' element={<AddProduct/>}></Route>
+      <Route path='/singlePage:id' element={<SinglePage/>}></Route>
       <Route path='*' element={<ErrorPage/>}></Route>      
     </Routes>
     </>

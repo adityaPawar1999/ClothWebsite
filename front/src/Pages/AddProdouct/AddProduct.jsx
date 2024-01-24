@@ -22,7 +22,13 @@ const AddProduct = () => {
       console.log(data)
       const result = await axios.post("http://localhost:5004/addProduct", data);
       console.log(result.data)
+      if (result) {
+        alert('Data Saved Sucessfully')
+      } else {
+        alert('unabled to save')
+      }
     } catch (error) {
+      alert('unabled to save')
       console.log("error occured", error);
     }
   }
@@ -39,6 +45,8 @@ const AddProduct = () => {
               />
             </div>
             <div className="right col-lg-6">
+              <div className="title">ADD NEW PRODUCT :</div>
+              <hr />
               <form className='form' onSubmit={submitForm}>
                 <div className="box row g-0">
                   <div className="col-lg-6">
@@ -109,13 +117,15 @@ const AddProduct = () => {
                     <button
                       type='submit'
                       className='btn'
-                    >submit</button>
+                    >submit
+                    </button>
                   </div>
                   <div className="col-lg-6">
                     <button
                       type='cancel'
-                      className='btn'
-                    >cancel</button>
+                      className='btn cancel'
+                    >cancel
+                    </button>
                   </div>
                 </div>
               </form></div>
@@ -125,5 +135,4 @@ const AddProduct = () => {
     </>
   );
 };
-
 export default AddProduct;

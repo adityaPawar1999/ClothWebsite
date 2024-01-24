@@ -1,4 +1,5 @@
 const user = require("../modals/user");
+const Product = require('../modals/product')
 const bcrypt = require('bcrypt');
 
 const getData = async (req, res) => {
@@ -29,6 +30,12 @@ const login = async (req, res) => {
     }
 };
 
+
+
+
+
+
+
 const register = async (req, res) => {
     try {
         const { Fname, Lname, Email, Password } = req.body;
@@ -57,13 +64,36 @@ const register = async (req, res) => {
     }
 };
 
-const addProduct = async(req,res)=>{
-    try{
-        const{name, prize ,company ,categories ,image ,Description} = req.body;
-        console.log(name,prize,Description)
 
-    }catch(e){
-        console.error("Error creating data:", error);
+
+
+
+
+const addProduct = async (req, res) => {
+    try {
+        const { name, prize, company, categories, image, Description } = req.body;
+        const result = await Product.create({
+            name,
+            prize,
+            company,
+            categories,
+            image,
+            Description
+        });
+
+        if (result) {
+            console.log("Data saved successfully...!");
+            console.log(result);
+            res.json(result); // Send the saved data as a response
+        } else {
+            res.status(500).json('Unable to save data'); // Adjust the status code and message accordingly
+        }
+    } catch (e) {
+        console.error("Error creating data:", e);
+        res.status(500).json('Internal Server Error'); // Adjust the status code and message accordingly
     }
-}
+};
+
+
+
 module.exports = { getData, login, register ,addProduct};
