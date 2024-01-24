@@ -36,7 +36,7 @@ a{
     display:none;
 }
 a{
-    color:#212121;
+    color:#fff;
 }
 .navbar{
     position:relative;
@@ -51,8 +51,8 @@ a{
     width:100%;
     left:-0%;
     color:#212121;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0,.9);
+      backdrop-filter: blur(80px);
 }
 .navLink{
     font-size:1.5rem;
