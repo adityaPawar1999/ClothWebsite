@@ -22,6 +22,7 @@ const ShopPage = () => {
                                                 <img
                                                     className="image"
                                                     src={value.src}
+                                                    alt='image'
                                                 />
                                                 <div className="info">
                                                     <p className="title">{value.title}<br />
