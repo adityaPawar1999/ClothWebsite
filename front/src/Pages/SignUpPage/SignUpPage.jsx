@@ -8,39 +8,59 @@ const SignUpPage = () => {
     Lname: '',
     Email: '',
     Password: '',
+    gender: '',
   });
+
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    setData({
-      ...data,
-      [name]: value,
-    });
+
+    if (name === 'gender') {
+      setData({
+        ...data,
+        gender: value,
+      });
+    } else {
+      setData({
+        ...data,
+        [name]: value,
+      });
+    }
   };
-const saveData = async (e) => {
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+
+  const saveData = async (e) => {
     e.preventDefault();
-    try {
+
+    if (isChecked) {
+      console.log(data);
+
+      try {
         const savedData = await axios.post("http://localhost:5004/register", data);
         console.log("Data saved successfully:", savedData.data);
-    } catch (error) {
+      } catch (error) {
         console.error("Error saving data:", error.message);
 
         if (error.response) {
-            // The request was made and the server responded with a status code
-            // other than 2xx (success).
-            console.error("Response data:", error.response.data);
-            console.error("Response status:", error.response.status);
+          console.error("Response data:", error.response.data);
+          console.error("Response status:", error.response.status);
         } else if (error.request) {
-            // The request was made but no response was received.
-            console.error("No response received from the server");
+          // The request was made but no response was received.
+          console.error("No response received from the server");
         } else {
-            // Something happened in setting up the request that triggered an Error.
-            console.error("Error setting up the request:", error.message);
+          // Something happened in setting up the request that triggered an Error.
+          console.error("Error setting up the request:", error.message);
         }
+      }
+    } else {
+      console.log("Checkbox is not checked. Data not submitted.");
     }
-};
-
+  };
 
   return (
     <>
@@ -56,7 +76,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="First Name"
               />
-              <br/>
+              <br />
               <input
                 type="text"
                 className="inputField"
@@ -65,7 +85,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Last Name"
               />
-              <br/>
+              <br />
               <input
                 type="text"
                 className="inputField"
@@ -74,7 +94,7 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Email"
               />
-              <br/>
+              <br />
               <input
                 type="text"
                 className="inputField"
@@ -83,7 +103,23 @@ const saveData = async (e) => {
                 onChange={handleInput}
                 placeholder="Password"
               />
-              <br/>
+              <br />
+              <label>
+                Gender:
+                <select value={data.gender} name="gender" onChange={handleInput}>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={handleCheckboxChange}
+                />
+                I agree to the terms
+              </label>
+              <br />
               <button type="submit" className="inputField btn">SIGNUP</button>
             </form>
           </div>
