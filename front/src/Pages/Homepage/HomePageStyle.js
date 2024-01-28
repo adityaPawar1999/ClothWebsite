@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const HomePageStyle = styled.div`
-
+padding-top:3.2rem;
 .headerImage{
     width:100%;
     height:70vh;

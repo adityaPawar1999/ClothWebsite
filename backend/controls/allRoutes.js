@@ -33,12 +33,9 @@ const login = async (req, res) => {
 
 
 
-
-
-
 const register = async (req, res) => {
     try {
-        const { Fname, Lname, Email, Password } = req.body;
+        const { Fname, Lname, Email, Password , gender} = req.body;
         console.log(Fname)
         if (!Password) {
             return res.status(400).json({ error: 'Password is required' });
@@ -48,7 +45,8 @@ const register = async (req, res) => {
             Fname,
             Lname,
             Email,
-            Password: hashedPassword
+            Password: hashedPassword,
+            gender:gender
         });
         console.log("Data created successfully:", result);
         res.status(201).json(result);
@@ -63,7 +61,6 @@ const register = async (req, res) => {
         }
     }
 };
-
 
 
 

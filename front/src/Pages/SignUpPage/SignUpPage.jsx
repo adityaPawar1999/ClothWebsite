@@ -58,7 +58,7 @@ const SignUpPage = () => {
         }
       }
     } else {
-      console.log("Checkbox is not checked. Data not submitted.");
+      alert("Checkbox is not checked. Data not submitted.");
     }
   };
 
