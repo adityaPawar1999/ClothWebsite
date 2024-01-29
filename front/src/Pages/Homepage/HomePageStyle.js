@@ -16,7 +16,7 @@ padding-top:3.2rem;
     font-weight:500;
     font-size:1.5rem;
     text-transform:uppercase; 
-    color:#fff;
+    color:${props=>props.theme.color.main};
     left:10%;
     bottom:27%;
 }

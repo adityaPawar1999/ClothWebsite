@@ -1,6 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from "styled-components"; 
+
 
 import Header from "./Components/Header/Header";
 import Homepage from './Pages/Homepage/Homepage'
@@ -13,8 +15,15 @@ import AddProduct from './Pages/AddProdouct/AddProduct';
 import SinglePage from './Pages/SinglePage.jsx/SinglePage';
 
 function App() {
+   const theme = {
+    color: {
+      bgText: '#25D872',
+      bgSubText:"green"
+    }
+  };
   return (
     <>
+    <ThemeProvider theme={theme}>
     <Header/>
     <Routes>
       <Route path='/' element={<Homepage/>}></Route>
@@ -23,9 +32,10 @@ function App() {
       <Route path='/SignUp' element={<SignUpPage/>}></Route>
       <Route path='/cart' element={<Cart/>}></Route>
       <Route path='/addProduct' element={<AddProduct/>}></Route>
-      <Route path='/singlePage:id' element={<SinglePage/>}></Route>
+      <Route path='/singlePage/:id' element={<SinglePage/>}></Route>
       <Route path='*' element={<ErrorPage/>}></Route>      
     </Routes>
+    </ThemeProvider>
     </>
   );
 }
