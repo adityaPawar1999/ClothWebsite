@@ -104,20 +104,21 @@ const SignUpPage = () => {
                 placeholder="Password"
               />
               <br />
-              <label>
+              <label className="genderAndTerm">
                 Gender:
                 <select value={data.gender} name="gender" onChange={handleInput}>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
               </label>
-              <label>
+              <br />
+              <label className="genderAndTerm">
                 <input
                   type="checkbox"
                   checked={isChecked}
                   onChange={handleCheckboxChange}
                 />
-                I agree to the terms
+                I agree to the terms and condition
               </label>
               <br />
               <button type="submit" className="inputField btn">SIGNUP</button>

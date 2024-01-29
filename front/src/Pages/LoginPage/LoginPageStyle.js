@@ -10,10 +10,17 @@ const LoginPageStyle = styled.div`
   .inputField{
     margin-top:.5rem;
     width:18rem;
+    height:40px;
+    border-radius:5px;
+    padding-left:1rem;
+    border: 1px solid ${props => props.theme.color.bgText};
+  }
+  ::placeholder{
+    color:#212121;
   }
   .btn {
-    background:#212121;
     color:#fff;
+    background:${props => props.theme.color.bgText};
     width: 100%;
   }
 `;

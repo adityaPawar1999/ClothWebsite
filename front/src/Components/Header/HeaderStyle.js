@@ -18,7 +18,7 @@ const HeaderStyle = styled.div`
     border:none;
 }
 .active{
-    color:lightgreen;
+    color:${props => props.theme.color.bgText};
 }
 .desktopNavbar{
     display:flex;

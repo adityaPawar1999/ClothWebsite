@@ -18,7 +18,7 @@ function App() {
    const theme = {
     color: {
       bgText: '#25D872',
-      bgSubText:"green"
+      bgSubText:"red"
     }
   };
   return (
