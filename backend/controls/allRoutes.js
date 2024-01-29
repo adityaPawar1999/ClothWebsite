@@ -1,17 +1,24 @@
 const user = require("../modals/user");
 const Product = require('../modals/product')
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+
 
 const getData = async (req, res) => {
     try {
-        const result = await user.find();
-        res.json(result);
+        jwt.verify(req.token,secretKey,(err,authData)=>{
+            if(err){
+                res.json('invalid tokem')
+            }else{
+                res.json(authData)
+            }
+        })
     } catch (error) {
         res.status(500).send(error.message);
     }
 };
 
-const login = async (req, res) => {
+const login = async  (req, res) => {
     const { Email, Password } = req.body;
     try {
         const validUser = await user.findOne({ Email });
