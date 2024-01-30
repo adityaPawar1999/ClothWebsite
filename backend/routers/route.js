@@ -19,12 +19,9 @@ const verifyToken = (req, res, next) => {
         res.json('Token not provided');
     }
 }
-const verifyToken2 = (req,res) =>{
-    console.log('text passed')
-    next();
-}
 
-router.get('/getData', verifyToken, getData);
+
+router.get('/getData', getData);
 router.post('/register',register);
 router.post('/login', login);
 router.post('/addProduct', addProduct);

@@ -6,54 +6,17 @@ const jwt = require('jsonwebtoken')
 const secretKey = 'adityaPawar'
 const getData = async (req, res) => {
     try {
-        // Send an initial response
-
-        // Verify the JWT token
         jwt.verify(req.token, secretKey, (err, authData) => {
             if (err) {
-                // Send an error response
-                res.json('invalid token');
+                res.json(' ');
             } else {
-                // Log and send the authenticated data
-                console.log("we're here");
-                console.log(authData);
-                res.json(authData);
+                res.json("authData");
             }
         });
     } catch (error) {
-        // Send an error response if an exception occurs
         res.status(500).send(error.message);
     }
 };
-
-
-const login = async  (req, res) => {
-    const { Email, Password } = req.body;
-    try {
-        const validUser = await user.findOne({ Email });
-         const passwordMatch = await bcrypt.compare(Password, validUser.Password);
-
-
-        if (validUser) {
-            if (passwordMatch) {
-                console.log("Login successful");
-                
-                // Generate a token
-                const token = jwt.sign({ userId: validUser._id ,email: validUser.Email , gender:validUser.gender }, secretKey , { expiresIn: '1h' });
-
-                res.json({token})
-            } else {
-                console.log("Invalid password");
-            }
-        } else {
-            console.log('User not found');
-        }
-    } catch (error) {
-        console.log(error);
-    }
-};
-
-
 
 
 const register = async (req, res) => {
@@ -76,7 +39,6 @@ const register = async (req, res) => {
     } catch (error) {
         console.error("Error creating data:", error);
         
-        // Handle specific bcrypt errors
         if (error.name === 'MongoError' && error.code === 11000) {
             res.status(400).json({ error: 'Duplicate email. User already exists.' });
         } else {
@@ -86,7 +48,28 @@ const register = async (req, res) => {
 };
 
 
+const login = async  (req, res) => {
+    const { Email, Password } = req.body;
+    try {
+        const validUser = await user.findOne({ Email });
+         const passwordMatch = await bcrypt.compare(Password, validUser.Password);
 
+
+        if (validUser) {
+            if (passwordMatch) {
+                console.log("Login successful");
+                const token = jwt.sign({ userId: validUser._id ,email: validUser.Email , gender:validUser.gender }, secretKey , { expiresIn: '1h' });
+                res.json({token})
+            } else {
+                console.log("Invalid password");
+            }
+        } else {
+            console.log('User not found');
+        }
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
 const addProduct = async (req, res) => {
@@ -103,17 +86,14 @@ const addProduct = async (req, res) => {
 
         if (result) {
             console.log("Data saved successfully...!");
-            console.log(result);
-            res.json(result); // Send the saved data as a response
+            res.json(result); 
         } else {
-            res.status(500).json('Unable to save data'); // Adjust the status code and message accordingly
+            res.status(500).json('Unable to save data');
         }
     } catch (e) {
         console.error("Error creating data:", e);
-        res.status(500).json('Internal Server Error'); // Adjust the status code and message accordingly
+        res.status(500).json('Internal Server Error'); 
     }
 };
-
-
 
 module.exports = { getData, login, register ,addProduct};
