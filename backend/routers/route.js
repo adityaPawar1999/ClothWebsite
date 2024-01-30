@@ -8,17 +8,24 @@ const verifyToken = (req, res, next) => {
         if (token !== undefined) {
             const breakToken = token.split(' ');
             const realToken = breakToken[1];
+            req.token = realToken;
+            console.log("token is verified")
             next();
         } else {
+            console.log("token not  verified")
             res.json('Token not provided');
         }
     } catch (error) {
         res.json('Token not provided');
     }
 }
+const verifyToken2 = (req,res) =>{
+    console.log('text passed')
+    next();
+}
 
-router.get('/get', verifyToken, getData);
-router.post('/register', register);
+router.get('/getData', verifyToken, getData);
+router.post('/register',register);
 router.post('/login', login);
 router.post('/addProduct', addProduct);
 

@@ -3,29 +3,45 @@ const Product = require('../modals/product')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
-
+const secretKey = 'adityaPawar'
 const getData = async (req, res) => {
     try {
-        jwt.verify(req.token,secretKey,(err,authData)=>{
-            if(err){
-                res.json('invalid tokem')
-            }else{
-                res.json(authData)
+        // Send an initial response
+
+        // Verify the JWT token
+        jwt.verify(req.token, secretKey, (err, authData) => {
+            if (err) {
+                // Send an error response
+                res.json('invalid token');
+            } else {
+                // Log and send the authenticated data
+                console.log("we're here");
+                console.log(authData);
+                res.json(authData);
             }
-        })
+        });
     } catch (error) {
+        // Send an error response if an exception occurs
         res.status(500).send(error.message);
     }
 };
+
 
 const login = async  (req, res) => {
     const { Email, Password } = req.body;
     try {
         const validUser = await user.findOne({ Email });
+         const passwordMatch = await bcrypt.compare(Password, validUser.Password);
+
 
         if (validUser) {
-            if (validUser.Password === Password) {
+            if (passwordMatch) {
                 console.log("Login successful");
+                
+                // Generate a token
+                const token = jwt.sign({ userId: validUser._id ,email: validUser.Email , gender:validUser.gender }, secretKey , { expiresIn: '1h' });
+
+                res.json({token})
             } else {
                 console.log("Invalid password");
             }
