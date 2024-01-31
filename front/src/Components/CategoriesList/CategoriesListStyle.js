@@ -6,7 +6,7 @@ const CategoriesListStyle = styled.div`
     margin-top:3rem;
 }
 p{
-    padding:.5rem;
+    padding:.6rem;
     cursor:pointer;
     font-size:.8rem;
     font-weight:700;
@@ -14,9 +14,11 @@ p{
 }
 p:hover{
     color:#fff;
-    background:yellowGreen;
+    background:${props => props.theme.color.bgText};
 }
 p:active{
-    background:yellowGreen;
+    color:${props => props.theme.color.bgText};
+    background:${props => props.theme.color.white};
+    border:1px solid ${props => props.theme.color.bgText};
 }`
 export default CategoriesListStyle;

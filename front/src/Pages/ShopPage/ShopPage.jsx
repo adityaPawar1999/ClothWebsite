@@ -38,7 +38,9 @@ const ShopPage = () => {
                     </div>
                     <div className="col-lg-9">
                         {error ? (
-                            <Loading />
+                            <div className="loadingBox">
+                                <Loading />
+                            </div>
                         ) : (
                             <div className="row g-2">
                                 {data.map((value) => (

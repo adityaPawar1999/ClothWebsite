@@ -2,6 +2,11 @@ import styled from 'styled-components'
 
 const ShopPageStyle = styled.div`
 padding-top:6rem;
+.loadingBox{
+    display:flex;
+    align-item:center;
+    justify-content:center;
+}
 .image{
     width:100%;
 }

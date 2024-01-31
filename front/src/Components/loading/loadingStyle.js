@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const LoadingStyle = styled.div`
  .loader {
-      border: 8px solid #f3f3f3;
-      border-top: 8px solid #3498db;
+      border: 8px solid ${props => props.theme.color.bgText};
+      border-top: 8px solid ${props => props.theme.color.white};
       border-radius: 50%;
       width: 50px;
       height: 50px;
