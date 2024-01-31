@@ -13,10 +13,10 @@ padding-top:3.2rem;
 }
 .title{
     position:absolute;
-    font-weight:500;
+    font-weight:800;
     font-size:1.5rem;
     text-transform:uppercase; 
-    color:${props=>props.theme.color.main};
+    color:${props => props.theme.color.white};
     left:10%;
     bottom:27%;
 }

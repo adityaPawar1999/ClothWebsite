@@ -11,8 +11,7 @@ const HeaderStyle = styled.div`
     opacity:.8;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     position:fixed;
-
-    a{
+a{
     color:#fff;
     text-decoration:none;
     border:none;
