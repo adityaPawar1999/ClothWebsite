@@ -49,7 +49,7 @@ const ShopPage = () => {
                                             <img
                                                 className="image"
                                                 src={value.src}
-                                                alt='image'
+                                                alt={value.alt}
                                             />
                                             <div className="info">
                                                 <p className="title">

@@ -4,6 +4,7 @@ const data = [
         src:"https://i.pinimg.com/236x/8f/23/aa/8f23aa905da1e1a51dca474f2ca53699.jpg",
         title:'Black shirt',
         prize:'$300'
+        
     },{
         id:'1',
         src:"https://i.pinimg.com/236x/7e/d4/95/7ed495880da71820c4d69dc08cc50243.jpg",
