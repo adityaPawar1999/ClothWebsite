@@ -3,6 +3,7 @@ import CategoriesList from "../../Components/CategoriesList/CategoriesList";
 import ShopPageStyle from "./ShopPageStyle";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import Loading from "../../Components/loading/Loading";
 
 const ShopPage = () => {
     const [data, setData] = useState([]);
@@ -37,7 +38,7 @@ const ShopPage = () => {
                     </div>
                     <div className="col-lg-9">
                         {error ? (
-                            <p>Error: {error}</p>
+                            <Loading />
                         ) : (
                             <div className="row g-2">
                                 {data.map((value) => (
