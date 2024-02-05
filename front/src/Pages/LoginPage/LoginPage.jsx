@@ -19,16 +19,17 @@ const LoginPage = () => {
   const saveData = async (e) => {
     e.preventDefault();
     try {
-        const savedData = await axios.post("http://localhost:5004/login", data);
-        console.log('data saved sucessfully ', saveData.save);
+      const savedData = await axios.post("http://localhost:5004/login", data);
+      console.log('data transfer sucessfully ', savedData.save);
+      console.log(savedData);
     } catch (error) {
       console.log(error)
     }
   };
-  
+
   return (
     <>
-    <LoginPageStyle>
+      <LoginPageStyle>
         <div className="container">
           <div className="signUpForm">
             <form onSubmit={saveData}>
@@ -40,7 +41,7 @@ const LoginPage = () => {
                 onChange={handleInput}
                 placeholder="Email"
               />
-              <br/>
+              <br />
               <input
                 type="text"
                 className="inputField"
@@ -49,12 +50,12 @@ const LoginPage = () => {
                 onChange={handleInput}
                 placeholder="Password"
               />
-              <br/>
+              <br />
               <button type="submit" className="inputField btn">LOGIN</button>
             </form>
           </div>
         </div>
-        </LoginPageStyle>
+      </LoginPageStyle>
     </>
   );
 };

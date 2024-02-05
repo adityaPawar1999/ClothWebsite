@@ -47,29 +47,31 @@ const register = async (req, res) => {
     }
 };
 
-
-const login = async  (req, res) => {
+const login = async (req, res) => {
     const { Email, Password } = req.body;
     try {
         const validUser = await user.findOne({ Email });
-         const passwordMatch = await bcrypt.compare(Password, validUser.Password);
-
 
         if (validUser) {
+            const passwordMatch = await bcrypt.compare(Password, validUser.Password);
+
             if (passwordMatch) {
-                console.log("Login successful");
-                const token = jwt.sign({ userId: validUser._id ,email: validUser.Email , gender:validUser.gender }, secretKey , { expiresIn: '1h' });
-                res.json({token})
+                const token = jwt.sign({ userId: validUser._id, email: validUser.Email, gender: validUser.gender }, secretKey, { expiresIn: '1h' });
+                res.cookie('token', token).json(validUser.Fname + " and " + validUser.Lname);
             } else {
                 console.log("Invalid password");
+                res.status(401).json("Invalid password");
             }
         } else {
             console.log('User not found');
+            res.status(404).json("User not found");
         }
     } catch (error) {
         console.log(error);
+        res.status(500).json("Internal Server Error");
     }
 };
+
 
 
 const addProduct = async (req, res) => {
