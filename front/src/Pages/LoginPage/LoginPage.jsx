@@ -1,11 +1,15 @@
 import { useState } from "react";
 import LoginPageStyle from "./LoginPageStyle";
-import axios from 'axios'
+import axios from 'axios';
+
 const LoginPage = () => {
   const [data, setData] = useState({
     Email: '',
     Password: '',
   });
+  const [valid, setValid] = useState(false);
+  const [userName, setUserName] = useState('');
+
 
   const handleInput = (e) => {
     const name = e.target.name;
@@ -19,11 +23,13 @@ const LoginPage = () => {
   const saveData = async (e) => {
     e.preventDefault();
     try {
-      const savedData = await axios.post("http://localhost:5004/login", data);
-      console.log('data transfer sucessfully ', savedData.save);
-      console.log(savedData);
+      const response = await axios.post("http://localhost:5004/login", data);
+      console.log('Data transferred successfully ', response.data);
+      console.log(data)
+      setValid(true);
+      setUserName(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
@@ -31,6 +37,9 @@ const LoginPage = () => {
     <>
       <LoginPageStyle>
         <div className="container">
+
+          {valid ? <p>Welcome, {userName}</p> : <p>Login First</p>}
+
           <div className="signUpForm">
             <form onSubmit={saveData}>
               <input
