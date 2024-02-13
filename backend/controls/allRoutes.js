@@ -2,8 +2,14 @@ const user = require("../modals/user");
 const Product = require('../modals/product')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const path = require('path');
+const fs = require('fs');
+
 
 const secretKey = 'adityaPawar'
+
 const getData = async (req, res) => {
     try {
         jwt.verify(req.token, secretKey, (err, authData) => {
@@ -54,7 +60,6 @@ const login = async (req, res) => {
 
         if (validUser) {
             const passwordMatch = await bcrypt.compare(Password, validUser.Password);
-
             if (passwordMatch) {
                 const token = jwt.sign({ userId: validUser._id, email: validUser.Email, gender: validUser.gender }, secretKey, { expiresIn: '1h' });
                 res.cookie('token', token).json(validUser._id);
@@ -72,11 +77,17 @@ const login = async (req, res) => {
     }
 };
 
-
-
 const addProduct = async (req, res) => {
     try {
-        const { name, prize, company, categories, image, Description } = req.body;
+        const { name, prize, company, categories, Description } = req.body;
+        
+        // Check if a file is uploaded
+        if (!req.file) {
+            return res.status(400).json('No file uploaded');
+        }
+        
+        const image = req.file.filename; 
+        
         const result = await Product.create({
             name,
             prize,

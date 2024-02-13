@@ -25,10 +25,10 @@ const LoginPage = () => {
     try {
       const response = await axios.post("http://localhost:5004/login", data);
       console.log('Data transferred successfully ', response.data);
-      console.log(data)
       setValid(true);
       setUserName(response.data);
     } catch (error) {
+      alert('cant login Now')
       console.log(error);
     }
   };
