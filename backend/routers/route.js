@@ -26,9 +26,20 @@ const verifyToken = (req, res, next) => {
     }
 }
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './images/');//--------here images is folder name 
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    cb(null, `${file.fieldname}-${Date.now()}${ext}`);
+  }
+});
+const uploadMiddleware = multer({ storage: storage });
+
 router.get('/getData', getData);
 router.post('/register', register);
 router.post('/login', login);
-router.post('/addProduct', upload.single('image'), addProduct);
+router.post('/addProduct',  uploadMiddleware.single('productImage'), addProduct);
 
 module.exports = router; // Corrected spelling of module.exports

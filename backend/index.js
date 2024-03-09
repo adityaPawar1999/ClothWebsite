@@ -7,7 +7,7 @@ const PORT =process.env.PORT || 5006
 
 const app = express();
 const cors = require('cors')
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 connectToDatabase();
 
 app.use(cors());

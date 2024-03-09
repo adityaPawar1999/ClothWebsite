@@ -81,12 +81,10 @@ const addProduct = async (req, res) => {
     try {
         const { name, prize, company, categories, Description } = req.body;
         
-        // Check if a file is uploaded
-        if (!req.file) {
-            return res.status(400).json('No file uploaded');
-        }
-        
-        const image = req.file.filename; 
+          let productImage = '';
+    if (req.file) {
+      productImage = req.file.filename;
+    }
         
         const result = await Product.create({
             name,
