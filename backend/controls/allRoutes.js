@@ -91,7 +91,7 @@ const addProduct = async (req, res) => {
             prize,
             company,
             categories,
-            image,
+            image : productImage,
             Description
         });
 

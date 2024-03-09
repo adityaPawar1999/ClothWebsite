@@ -3,6 +3,8 @@ const connectToDatabase = require('./Connection');
 const router = require('./routers/route');
 const cookieParser = require('cookie-parser');
 require('dotenv').config();
+const path = require('path'); // Add this line to import the path module
+
 const PORT =process.env.PORT || 5006
 
 const app = express();
